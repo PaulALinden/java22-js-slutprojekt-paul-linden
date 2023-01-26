@@ -34,6 +34,7 @@ article{
 #searchPic{
     width:200px;
     margin: 6px;
+    margin-right: 0;
 }
 
 #search{
@@ -60,14 +61,14 @@ footer{
 }
 
 img{
-    margin: 2px;
+    border-radius: 5%;
 }
 
 a{
     width: fit-content;
-    border: 2px groove grey;
     margin: 2px;
-   
+    border-radius: 5%;
+    
 }
 
 #errorMessage{
@@ -83,6 +84,39 @@ a{
     border-radius: 30%;
 }
 
+label{
+    font-weight: bold;
+    color: white;
+}
+
+#headerH1{
+    color: white;
+}    
+
+select{
+    padding: 3px;
+  
+}
+
+
+input{
+    padding: 3px;
+    margin: 0;
+    outline: none;
+}
+
+.buttonIn{
+    position: relative;
+}
+
 #button{
-    margin-top: 8px;
+    position: absolute;
+        right: 0px;
+        z-index: 2;
+        border: none;
+        top: 7px;
+        height: 23px;
+        cursor: pointer;
+        transform: translateX(2px);
+        border-radius: 2px;
 }

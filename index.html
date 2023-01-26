@@ -11,18 +11,20 @@
 
 <body>
     <header>
-        <h1>PicFinder</h1>
+        <h1 id="headerH1">Pic.Finder</h1>
     </header>
     <article>
         <form action="" id="search">
-            <label for="searchPic">Search pic: </label>
-            <input type="text" id="searchPic">
+            <div class="buttonIn">
+                <label for="searchPic">Search pic: </label>
+                <input type="text" id="searchPic" placeholder="Search">
+                <input type="button" value="Search" id="button">
+            </div>
             <span>
                 <label for="amount">Amount: </label><select name="amount" id="amount"></select>
                 <label for="size">Size: </label><select name="size" id="size"></select>
                 <label for="sort">Sort: </label><select name="sort" id="sort">sort</select>
             </span>
-            <input type="button" value="Search" id="button">
         </form>
     </article>
     <main id="displayResult">
