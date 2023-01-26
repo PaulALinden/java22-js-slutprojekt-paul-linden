@@ -10,33 +10,25 @@
 </head>
 
 <body>
-   
     <header>
-        
         <h1>PicFinder</h1>
-
     </header>
-
     <article>
-        
         <form action="" id="search">
-
-            Search pic:<input type="text" id="searchPic">
-            <section>
-            Amount: <select name="amount" id="amount"></select>
-            Size: <select name="size" id="size"></select>
+            <label for="searchPic">Search pic: </label>
+            <input type="text" id="searchPic">
+            <span>
+                <label for="amount">Amount: </label><select name="amount" id="amount"></select>
+                <label for="size">Size: </label><select name="size" id="size"></select>
+                <label for="sort">Sort: </label><select name="sort" id="sort">sort</select>
+            </span>
             <input type="button" value="Search" id="button">
-            </section>
         </form>
-
     </article>
-
-    <main id="displayResult"></main>
-
+    <main id="displayResult">
+    </main>
     <footer>
-
         <p>All rights bullshit</p>
-
     </footer>
 </body>
 

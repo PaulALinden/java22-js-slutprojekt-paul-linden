@@ -24,7 +24,7 @@ article{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 120px;
     position: sticky;
     top: 60px;
     border-bottom: 2px solid rgb(29, 48, 48);
@@ -46,8 +46,8 @@ article{
 
 main{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     min-height: 100%;
     background-color: darkslategrey;
 }
@@ -61,4 +61,28 @@ footer{
 
 img{
     margin: 2px;
+}
+
+a{
+    width: fit-content;
+    border: 2px groove grey;
+    margin: 2px;
+   
+}
+
+#errorMessage{
+    display: flex;
+    align-items: center;
+    background: grey;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    border: black solid 2px;
+    position: sticky;
+    top: 300px;
+    border-radius: 30%;
+}
+
+#button{
+    margin-top: 8px;
 }
