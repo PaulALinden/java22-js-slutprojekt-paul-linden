@@ -16,14 +16,25 @@
     <article>
         <form action="" id="search">
             <div class="buttonIn">
-                <label for="searchPic">Search pic: </label>
                 <input type="text" id="searchPic" placeholder="Search">
-                <input type="button" value="Search" id="button">
+                <input type="submit" value="Search" id="searchButton">
             </div>
             <span>
                 <label for="amount">Amount: </label><select name="amount" id="amount"></select>
-                <label for="size">Size: </label><select name="size" id="size"></select>
-                <label for="sort">Sort: </label><select name="sort" id="sort">sort</select>
+                <label for="size">Size: </label><select name="size" id="size">
+                    <option value="w">Small</option>
+                    <option value="z">Medium</option>
+                    <option value="b">Large</option>
+                </select>
+                <label for="sort">Sort: </label><select name="sort" id="sort">
+                    <option value="relevance">Relevance</option>
+                    <option value="dnterestingness">Interestingness</option>
+                    <option value="date-posted-desc">Date-posted</option>
+                </select>
+                <label for="searchBy">Search by:</label><select name="searchBy" id="searchBy">
+                    <option value="text">Text</option>
+                    <option value="tags">Tags</option>
+                </select>
             </span>
         </form>
     </article>

@@ -62,6 +62,7 @@ footer{
 
 img{
     border-radius: 5%;
+    margin-top: 20px;
 }
 
 a{
@@ -109,7 +110,7 @@ input{
     position: relative;
 }
 
-#button{
+#searchButton{
     position: absolute;
         right: 0px;
         z-index: 2;

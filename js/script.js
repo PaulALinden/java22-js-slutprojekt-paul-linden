@@ -3,22 +3,15 @@
 const amountOption = document.querySelector('#amount');
 const sizeOption = document.querySelector('#size');
 const searchPic = document.querySelector('#searchPic');
-const formSubmit = document.querySelector('form #button');
+const formSubmit = document.querySelector('#searchButton');
 const displayResult = document.querySelector('#displayResult');
 const sortOptions = document.querySelector('#sort');
-const sizes = ['Small', 'Medium', 'Large'];
-const sort = ['relevance', 'interestingness', 'date-posted'];
-let sorter;
+const searchBy = document.querySelector('#searchBy');
 let sizeSuffix;
 
 //_____________Skapa Element___________________________________________________________    
 for (let i = 1; i <= 10; i++) {
     elementCreate(amountOption, 'option', i);
-}
-
-for (let i = 0; i <= 2; i++) {
-    elementCreate(sizeOption, 'option', sizes[i]);
-    elementCreate(sortOptions, 'option', sort[i]);
 }
 
 function elementCreate(addTo, element, text, src, id) {
@@ -28,7 +21,6 @@ function elementCreate(addTo, element, text, src, id) {
     added.src = src;
     added.id = id;
 }
-
 //________________Hämta Input___________________________________
 formSubmit.addEventListener('click', getUserInput);
 
@@ -40,14 +32,12 @@ function getUserInput(event) {
     }
 
     displayResult.innerHTML = '';
-    imgGetter(searchPic.value, amountOption.value, sizeOption.value, sortOptions.value);
+    imgGetter(searchPic.value, amountOption.value, sizeOption.value, sortOptions.value, searchBy.value);
 }
 //____________Hämta URL o Skapa IMG___________________________________________
-function imgGetter(searchInput, amountChoosen, sizeInput, sortOptions) {
+function imgGetter(searchInput, amountChoosen, sizeInput, sortOptions, searchBy) {
 
-    const sortArr = ['relevance', 'interestingness', 'date-posted-desc'];
-    const prov = switcher(sortOptions, sort, sorter, sortArr);
-    const callUrl = ` https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=31a356ab418ba2338f504ff73df86cf3&tags=${searchInput}&sort=${prov}&per_page=${amountChoosen}&format=json&nojsoncallback=1`;
+    const callUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=31a356ab418ba2338f504ff73df86cf3&${searchBy}=${searchInput}&sort=${sortOptions}&per_page=${amountChoosen}&format=json&nojsoncallback=1`;
     
     fetch(callUrl).then(response => {
 
@@ -60,8 +50,6 @@ function imgGetter(searchInput, amountChoosen, sizeInput, sortOptions) {
     })
         .then(data => {
 
-            const suffixArr = ['w', 'z', 'b']
-            let choosenSize = switcher(sizeInput, sizes, sizeSuffix, suffixArr);
             const dataArr = data.photos.photo;
             
             if (dataArr.length == 0) {
@@ -69,7 +57,7 @@ function imgGetter(searchInput, amountChoosen, sizeInput, sortOptions) {
             }
 
             for (let i = 0; i < dataArr.length; i++) {
-                let imgUrl = `https://live.staticflickr.com/${dataArr[i].server}/${dataArr[i].id}_${dataArr[i].secret}_${choosenSize}.jpg`;
+                let imgUrl = `https://live.staticflickr.com/${dataArr[i].server}/${dataArr[i].id}_${dataArr[i].secret}_${sizeInput}.jpg`;
                 elementCreate(displayResult, 'a', '', '');
                 let aTag = document.querySelectorAll('a')[i];
                 aTag.href = imgUrl;
@@ -83,14 +71,4 @@ function imgGetter(searchInput, amountChoosen, sizeInput, sortOptions) {
             }
         );
 }
-function switcher(expression, caseParameter, returnVariable, addVariable) {
 
-    switch (expression) {
-        case caseParameter[0]: returnVariable = addVariable[0];
-            return returnVariable
-        case caseParameter[1]: returnVariable = addVariable[1];
-            return returnVariable
-        case caseParameter[2]: returnVariable = addVariable[2];
-            return returnVariable
-    }
-}
