@@ -6,40 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PicFinder</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image" href="/images/searchImg.png">
     <script src="js/script.js" defer></script>
 </head>
 
 <body>
+    
     <header>
-        <h1 id="headerH1">Pic.Finder</h1>
+        <img src="/images/picfinder.jpg" alt="" id="headImg" >
     </header>
-    <article>
-        <form action="" id="search">
-            <div class="buttonIn">
-                <input type="text" id="searchPic" placeholder="Search">
-                <input type="submit" value="Search" id="searchButton">
-            </div>
-            <span>
-                <label for="amount">Amount: </label><select name="amount" id="amount"></select>
-                <label for="size">Size: </label><select name="size" id="size">
-                    <option value="w">Small</option>
-                    <option value="z">Medium</option>
-                    <option value="b">Large</option>
-                </select>
-                <label for="sort">Sort: </label><select name="sort" id="sort">
-                    <option value="relevance">Relevance</option>
-                    <option value="dnterestingness">Interestingness</option>
-                    <option value="date-posted-desc">Date-posted</option>
-                </select>
-                <label for="searchBy">Search by:</label><select name="searchBy" id="searchBy">
-                    <option value="text">Text</option>
-                    <option value="tags">Tags</option>
-                </select>
-            </span>
-        </form>
-    </article>
-    <main id="displayResult">
+    
+    <main>
+        
+        <section id="searchSection">
+            
+            <form action="" id="searchForm">
+                
+                <div id="searchBar">
+
+                    <input type="text" id="searchPic" placeholder="Search">
+                    <input type="submit" id="searchSubmit">
+
+                </div>
+                
+                <div>
+                    <label for="amount">Amount: </label><select name="amount" id="amount"></select>
+                    
+                    <label for="size">Size: </label><select name="size" id="size">
+                        <option value="w">Small</option>
+                        <option value="z">Medium</option>
+                        <option value="b">Large</option>
+                    </select>
+                    
+                    <label for="sort">Sort: </label><select name="sort" id="sort">
+                        <option value="relevance">Relevance</option>
+                        <option value="dnterestingness">Interestingness</option>
+                        <option value="date-posted-desc">Date-posted</option>
+                    </select>
+                    
+                    <label for="searchBy">Search by:</label><select name="searchBy" id="searchBy">
+                        <option value="text">Text</option>
+                        <option value="tags">Tags</option>
+                    </select>
+
+                </div>
+
+            </form>
+
+        </section>
+        
+        <section id="displayImage">
+
+            <h2>&#128248; Go ahead and find some pics &#128248;</h2>
+
+        </section >
+
     </main>
+    
     <footer>
         <p>All rights bullshit</p>
     </footer>
