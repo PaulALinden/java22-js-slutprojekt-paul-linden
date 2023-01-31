@@ -6,16 +6,16 @@ const inputSubmitForm = document.querySelector('#searchSubmit');
 const containerDisplayImage = document.querySelector('#displayImage');
 const selectSort = document.querySelector('#sort');
 const selectSearchBy = document.querySelector('#searchBy');
-    
+
 // Create options for amount   
 for (let i = 1; i <= 10; i++) {
     createElement(selectAmount, 'option', i);
 }
 
 // Function for creating Elements
-function createElement(addTo, element, text, src, id) {
-    let newElement = document.createElement(element);
-    addTo.append(newElement);
+function createElement(appendTo, newElement, text, src, id) {
+    newElement = document.createElement(newElement);
+    appendTo.append(newElement);
     newElement.innerText = text;
     newElement.src = src;
     newElement.id = id;
@@ -31,7 +31,6 @@ function getUserInput(event) {
     if (inputSearchPic.value == '') {
         inputSearchPic.value = 'random';
     }
-    
     containerDisplayImage.innerHTML = '';
     imgGetAndDisplay(inputSearchPic.value, selectAmount.value, selectSize.value, selectSort.value, selectSearchBy.value);
 }
@@ -53,7 +52,6 @@ function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, 
         .then(data => {
             
             containerDisplayImage.innerHTML = '';
-
             const dataReturned = data.photos.photo;
        
             if (dataReturned.length == 0) {
@@ -77,27 +75,23 @@ function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, 
         );
 }
 
+//~~~~~~~~~~~~~~~~~~ Extras ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const expandButton = document.querySelector('#expandButton');
 
-//---------------------------------------
-//------ Under construction--------------
-//---------------------------------------
-const expandForm = document.querySelector('#expandForm');
-
-expandForm.addEventListener('click', expandSearch);
-
+expandButton.addEventListener('click', expandSearch);
 function expandSearch(event) {
     event.preventDefault();
-
-    const expandButton = document.querySelector('#expandButton');
+    
     const advancedSearch = document.querySelector('#advancedSearch');
     const searchSection = document.querySelector('#searchSection');
    
     if (expandButton.value == 'expand') {
         advancedSearch.style.display = 'block';
+        
+        searchSection.style.transition = 'height 0.1s';
         expandButton.innerText = '⇧Advancedsearch⇧';
         searchSection.style.height = '120px';
         expandButton.value = 'close';
-
     }
     else if (expandButton.value == 'close') {
         advancedSearch.style.display = 'none';
@@ -107,3 +101,15 @@ function expandSearch(event) {
     }
 }
 
+//---------------------------------------
+//------ Under construction--------------
+//⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩
+
+const layout = document.querySelector('#layout');
+
+function changeLayout(event) {
+    event.preventDefault();
+
+
+
+}
