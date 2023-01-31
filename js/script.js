@@ -6,8 +6,7 @@ const inputSubmitForm = document.querySelector('#searchSubmit');
 const containerDisplayImage = document.querySelector('#displayImage');
 const selectSort = document.querySelector('#sort');
 const selectSearchBy = document.querySelector('#searchBy');
-
-
+    
 // Create options for amount   
 for (let i = 1; i <= 10; i++) {
     createElement(selectAmount, 'option', i);
@@ -25,23 +24,23 @@ function createElement(addTo, element, text, src, id) {
 // EventListner for searchForm
 inputSubmitForm.addEventListener('click', getUserInput);
 
-//Function to get user input from searchForm
+// Function to get user input from searchForm
 function getUserInput(event) {
     event.preventDefault();
 
     if (inputSearchPic.value == '') {
         inputSearchPic.value = 'random';
     }
-
+    
     containerDisplayImage.innerHTML = '';
     imgGetAndDisplay(inputSearchPic.value, selectAmount.value, selectSize.value, selectSort.value, selectSearchBy.value);
 }
 
-//Function for calling API and display searched images
+// Function for calling API and display searched images
 function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, searchByChoosen) {
 
     const callUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=31a356ab418ba2338f504ff73df86cf3&${searchByChoosen}=${searchInput}&sort=${sortChoosen}&per_page=${amountChoosen}&format=json&nojsoncallback=1`;
-    
+
     fetch(callUrl).then(response => {
 
         if (response.ok) {
@@ -52,15 +51,16 @@ function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, 
         }
     })
         .then(data => {
+            
+            containerDisplayImage.innerHTML = '';
 
             const dataReturned = data.photos.photo;
-            
-            console.log(dataReturned);
-
+       
             if (dataReturned.length == 0) {
                 createElement(containerDisplayImage, 'h1', 'No matches found!', '', 'errorMessage');                
             }
 
+            // Loop that constructs imgUrl and creates clickable image
             for (let i = 0; i < dataReturned.length; i++) {
                 let imgUrl = `https://live.staticflickr.com/${dataReturned[i].server}/${dataReturned[i].id}_${dataReturned[i].secret}_${sizeChoosen}.jpg`;
                 createElement(containerDisplayImage, 'a', '', '');
@@ -75,5 +75,35 @@ function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, 
                 console.log(error)
             }
         );
+}
+
+
+//---------------------------------------
+//------ Under construction--------------
+//---------------------------------------
+const expandForm = document.querySelector('#expandForm');
+
+expandForm.addEventListener('click', expandSearch);
+
+function expandSearch(event) {
+    event.preventDefault();
+
+    const expandButton = document.querySelector('#expandButton');
+    const advancedSearch = document.querySelector('#advancedSearch');
+    const searchSection = document.querySelector('#searchSection');
+   
+    if (expandButton.value == 'expand') {
+        advancedSearch.style.display = 'block';
+        expandButton.innerText = '⇧Advancedsearch⇧';
+        searchSection.style.height = '120px';
+        expandButton.value = 'close';
+
+    }
+    else if (expandButton.value == 'close') {
+        advancedSearch.style.display = 'none';
+        expandButton.innerText = '⇩Advancedsearch⇩';
+        searchSection.style.height = '80px';
+        expandButton.value = 'expand';
+    }
 }
 

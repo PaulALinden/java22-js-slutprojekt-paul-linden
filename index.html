@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PicFinder</title>
+    <title>Picfinder</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image" href="./images/searchImg.png">
     <script src="js/script.js" defer></script>
@@ -25,12 +25,12 @@
                 <div id="searchBar">
 
                     <input type="text" id="searchPic" placeholder="Search">
+                    <label for="amount">Amount: </label><select name="amount" id="amount"></select>
                     <input type="submit" id="searchSubmit">
 
                 </div>
                 
-                <div>
-                    <label for="amount">Amount: </label><select name="amount" id="amount"></select>
+                <div id="advancedSearch">
                     
                     <label for="size">Size: </label><select name="size" id="size">
                         <option value="w">Small</option>
@@ -50,7 +50,10 @@
                     </select>
 
                 </div>
-
+            </form>
+            
+            <form action="" id="expandForm">
+                <button id="expandButton" value="expand">⇩Advancedsearch⇩</button>
             </form>
 
         </section>
@@ -64,7 +67,8 @@
     </main>
     
     <footer>
-        <p>All rights bullshit</p>
+        <p>All rights 'n stuff&copy;</p>
+        <p>While using Pic.finder, you agree to have read and accepted our <a href="https://media.tenor.com/pCGY5McRQMgAAAAC/gottem-meme-fun-deez-nut-lol.gif">terms</a> of use, cookie and privacy policy. </p>
     </footer>
 </body>
 
