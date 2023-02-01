@@ -8,8 +8,8 @@ const selectSort = document.querySelector('#sort');
 const selectSearchBy = document.querySelector('#searchBy');
 
 // Create options for amount   
-for (let i = 1; i <= 10; i++) {
-    createElement(selectAmount, 'option', i);
+for (let i = 1; i <= 5; i++) {
+    createElement(selectAmount, 'option', i*10);
 }
 
 // Function for creating Elements
@@ -55,11 +55,13 @@ function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, 
                 createElement(containerDisplayImage, 'h1', 'No matches found!', '', 'errorMessage');                
             }
 
-            // Loop that creates imgUrl and clickable image
+            // Loop that creates url and creates images that are clickable 
             for (let i = 0; i < dataReturned.length; i++) {
+                
                 let imgUrl = `https://live.staticflickr.com/${dataReturned[i].server}/${dataReturned[i].id}_${dataReturned[i].secret}_${sizeChoosen}.jpg`;
                 createElement(containerDisplayImage, 'a', '', '');
                 let aTag = document.querySelectorAll('a')[i];
+                aTag.target = '_blank';
                 aTag.href = imgUrl;
                 createElement(aTag, 'img', '', imgUrl);
             }
@@ -72,20 +74,14 @@ function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, 
         );
 }
 
-//---------------------------------------
-//------ Under construction--------------
-//⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩
-
 const expandButton = document.querySelector('#expandButton');
-expandButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    
+expandButton.addEventListener("click", () => {
+
     const advancedSearch = document.querySelector('#advancedSearch');
     const searchSection = document.querySelector('#searchSection');
    
     if (expandButton.value == 'expand') {
         advancedSearch.style.display = 'block';
-        
         searchSection.style.transition = 'height 0.1s';
         expandButton.innerText = '⇧Advancedsearch⇧';
         searchSection.style.height = '120px';
@@ -113,3 +109,9 @@ layout.addEventListener("click", (event) => {
         console.log('2');
     }
 });
+
+//---------------------------------------
+//------ Under construction--------------
+//⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩
+
+// Nothing under construction for now....
