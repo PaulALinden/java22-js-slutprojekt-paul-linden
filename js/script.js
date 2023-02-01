@@ -16,7 +16,7 @@ for (let i = 1; i <= 5; i++) {
 function createElement(appendTo, newElement, text, src, id) {
     newElement = document.createElement(newElement);
     appendTo.append(newElement);
-    newElement.innerText = text;
+    newElement.textContent = text;
     newElement.src = src;
     newElement.id = id;
 }
@@ -28,8 +28,14 @@ inputSubmitForm.addEventListener("click", (event) => {
     if (inputSearchPic.value == '') {
         inputSearchPic.value = 'random';
     }
+    
     containerDisplayImage.innerHTML = '';
-    imgGetAndDisplay(inputSearchPic.value, selectAmount.value, selectSize.value, selectSort.value, selectSearchBy.value);
+    
+    // Added safety features for text input
+    let cleanValue = DOMPurify.sanitize(inputSearchPic.value);
+    console.log(clean);
+
+    imgGetAndDisplay(cleanValue, selectAmount.value, selectSize.value, selectSort.value, selectSearchBy.value);
 });
 
 // Function for calling API and display searched images
@@ -103,11 +109,9 @@ layout.addEventListener("click", (event) => {
     
     if (event.target.type === "submit" && event.target.id === "rowLayout") {
         containerDisplayImage.id = 'displayImageRow';
-        console.log('1');
     }
     else if (event.target.type === "submit" && event.target.id === "columnLayout") {
         containerDisplayImage.id = 'displayImage';
-        console.log('2');
     }
 });
 
