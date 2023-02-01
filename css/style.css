@@ -180,6 +180,7 @@ p{
 #displayImageRow{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
     min-height: 100%;
     width: fit-content;
@@ -189,7 +190,6 @@ p{
 }
 
 #displayImageRow img{
-    width: 250px;
     height: 250px;
 }
 
