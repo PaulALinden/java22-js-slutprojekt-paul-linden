@@ -33,8 +33,7 @@ inputSubmitForm.addEventListener("click", (event) => {
     
     // Added safety features for text input
     let cleanValue = DOMPurify.sanitize(inputSearchPic.value);
-    console.log(clean);
-
+   
     imgGetAndDisplay(cleanValue, selectAmount.value, selectSize.value, selectSort.value, selectSearchBy.value);
 });
 
