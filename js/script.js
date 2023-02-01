@@ -21,11 +21,8 @@ function createElement(appendTo, newElement, text, src, id) {
     newElement.id = id;
 }
 
-// EventListner for searchForm
-inputSubmitForm.addEventListener('click', getUserInput);
-
-// Function to get user input from searchForm
-function getUserInput(event) {
+// EventListner that gets user input from searchForm
+inputSubmitForm.addEventListener("click", (event) => {
     event.preventDefault();
 
     if (inputSearchPic.value == '') {
@@ -33,7 +30,7 @@ function getUserInput(event) {
     }
     containerDisplayImage.innerHTML = '';
     imgGetAndDisplay(inputSearchPic.value, selectAmount.value, selectSize.value, selectSort.value, selectSearchBy.value);
-}
+});
 
 // Function for calling API and display searched images
 function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, searchByChoosen) {
@@ -58,7 +55,7 @@ function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, 
                 createElement(containerDisplayImage, 'h1', 'No matches found!', '', 'errorMessage');                
             }
 
-            // Loop that constructs imgUrl and creates clickable image
+            // Loop that creates imgUrl and clickable image
             for (let i = 0; i < dataReturned.length; i++) {
                 let imgUrl = `https://live.staticflickr.com/${dataReturned[i].server}/${dataReturned[i].id}_${dataReturned[i].secret}_${sizeChoosen}.jpg`;
                 createElement(containerDisplayImage, 'a', '', '');
@@ -75,11 +72,12 @@ function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, 
         );
 }
 
-//~~~~~~~~~~~~~~~~~~ Extras ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const expandButton = document.querySelector('#expandButton');
+//---------------------------------------
+//------ Under construction--------------
+//⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩
 
-expandButton.addEventListener('click', expandSearch);
-function expandSearch(event) {
+const expandButton = document.querySelector('#expandButton');
+expandButton.addEventListener("click", (event) => {
     event.preventDefault();
     
     const advancedSearch = document.querySelector('#advancedSearch');
@@ -99,17 +97,19 @@ function expandSearch(event) {
         searchSection.style.height = '80px';
         expandButton.value = 'expand';
     }
-}
+});
 
-//---------------------------------------
-//------ Under construction--------------
-//⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩
 
 const layout = document.querySelector('#layout');
-
-function changeLayout(event) {
+layout.addEventListener("click", (event) => {
     event.preventDefault();
-
-
-
-}
+    
+    if (event.target.type === "submit" && event.target.id === "rowLayout") {
+        containerDisplayImage.id = 'displayImageRow';
+        console.log('1');
+    }
+    else if (event.target.type === "submit" && event.target.id === "columnLayout") {
+        containerDisplayImage.id = 'displayImage';
+        console.log('2');
+    }
+});

@@ -152,6 +152,19 @@ p{
     color: white;
     border: 2px solid rgb(47, 79, 79);
 }
+
+#rowLayout ,#columnLayout{
+    padding: 2px;
+    border-radius: 8%;
+    background-color: rgb(82, 134, 134);
+    color: white;
+    border: 2px solid rgb(47, 79, 79);
+}
+
+#rowLayout:hover ,#columnLayout:hover{
+    transform: scale(1.1);
+}
+
 /*Id:s in displayImage section */
 #displayImage{
     display: flex;
@@ -162,6 +175,22 @@ p{
     background-color: rgb(47, 79, 79, 0.95) ;
     padding: 20px;
     margin-top: 100px;
+}
+
+#displayImageRow{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 100%;
+    width: fit-content;
+    background-color: rgb(47, 79, 79, 0.95) ;
+    padding: 20px;
+    margin-top: 100px;
+}
+
+#displayImageRow img{
+    width: 250px;
+    height: 250px;
 }
 
 #errorMessage{
