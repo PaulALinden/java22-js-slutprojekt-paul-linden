@@ -74,6 +74,7 @@ function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, 
         );
 }
 
+// Function for expanding advanced search
 const expandButton = document.querySelector('#expandButton');
 expandButton.addEventListener("click", () => {
 
@@ -95,7 +96,7 @@ expandButton.addEventListener("click", () => {
     }
 });
 
-
+// Function that changes the layout of the displayed images
 const layout = document.querySelector('#layout');
 layout.addEventListener("click", (event) => {
     event.preventDefault();
