@@ -40,7 +40,7 @@ inputSubmitForm.addEventListener("click", (event) => {
 // Function for calling API and display searched images
 function imgGetAndDisplay(searchInput, amountChoosen, sizeChoosen, sortChoosen, searchByChoosen) {
 
-    const callUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=31a356ab418ba2338f504ff73df86cf3&${searchByChoosen}=${searchInput}&sort=${sortChoosen}&per_page=${amountChoosen}&format=json&nojsoncallback=1`;
+    const callUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${searchByChoosen}=${searchInput}&sort=${sortChoosen}&per_page=${amountChoosen}&format=json&nojsoncallback=1`;
 
     fetch(callUrl).then(response => {
 
